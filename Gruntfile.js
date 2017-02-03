@@ -47,12 +47,15 @@ module.exports = function(grunt) {
 		'archiveDist',
 		'cdnjsDist'
 	]);
-	
+
 	// Builds all distributable files, for a new release possibly
 	grunt.registerTask('build', [
 		'clean',
-		'modules',
-		'languages'
+		'clean:modules',
+		'lumbar:build',
+		'concat:moduleVariables',
+		'uglify:modules',
+		'cssmin:modules'
 	]);
 
 	// Bare minimum for debugging
